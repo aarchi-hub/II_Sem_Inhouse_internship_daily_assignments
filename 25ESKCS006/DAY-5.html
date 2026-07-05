@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Card</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#eef2f7;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .card{
+            width:350px;
+            background:yellowgreen;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,.2);
+            display:none;
+        }
+
+        h2{
+            margin-bottom:10px;
+        }
+
+        .details{
+            display:none;
+            margin-top:15px;
+            padding:10px;
+            background:#f4f4f4;
+            border-radius:5px;
+        }
+
+        .btn-details{
+            padding:10px 18px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>Student Card</h2>
+
+    <p><strong>Name:</strong> AARCHI JOSHI</p>
+    <p><strong>Course:</strong> B.TECH</p>
+
+    <button class="btn-details">Show Details</button>
+
+    <div class="details">
+        <p><strong>Roll No:</strong> 101</p>
+        <p><strong>Email:</strong> aarchi@gmail.com</p>
+        <p><strong>Phone:</strong> 1234567890</p>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    // Bonus: Fade in card
+    $(".card").fadeIn(1000);
+
+    $(".btn-details").click(function(){
+
+        $(this).closest(".card").find(".details").slideToggle();
+
+        if($(this).text()=="Show Details"){
+            $(this).text("Hide Details");
+            $(this).css({
+                "background":"crimson"
+            });
+        }
+        else{
+            $(this).text("Show Details");
+            $(this).css({
+                "background":"#007bff"
+            });
+        }
+
+    });
+
+});
+</script>
+
+</body>
+</html>
