@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Landing Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#222;
+    transition:.4s;
+}
+
+nav{
+    background:#007bff;
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    text-align:center;
+}
+
+button{
+    padding:10px 20px;
+    margin:10px;
+    border:none;
+    background:#007bff;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin-top:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+.error{
+    color:red;
+    font-size:14px;
+}
+
+.success{
+    color:green;
+    font-weight:bold;
+}
+
+.dark{
+    background:#121212;
+    color:white;
+}
+
+.dark nav{
+    background:#1f1f1f;
+}
+
+.dark .card{
+    background:#222;
+    color:white;
+}
+</style>
+
+</head>
+<body>
+
+<nav>
+<h2>My Landing Page</h2>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
+
+<div class="container">
+
+<h1>Welcome to Interactive Landing Page</h1>
+<p>JavaScript Fundamentals Mini Project</p>
+
+<button id="modeBtn">🌙 Dark Mode</button>
+
+<div class="card">
+<h2>Click Counter</h2>
+
+<h1 id="count">0</h1>
+
+<button id="clickBtn">Click Me</button>
+<button id="resetBtn">Reset</button>
+</div>
+
+<div class="card">
+<h2>Registration Form</h2>
+
+<form id="myForm">
+
+<input
+type="text"
+id="name"
+placeholder="Enter Name">
+
+<div id="nameError" class="error"></div>
+
+<input
+type="email"
+id="email"
+placeholder="Enter Email">
+
+<div id="emailError" class="error"></div>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<p id="successMsg" class="success"></p>
+
+</div>
+
+</div>
+
+<script>
+
+// ---------------------
+// DARK MODE
+// ---------------------
+
+let modeBtn=document.getElementById("modeBtn");
+
+modeBtn.onclick=function(){
+
+document.body.classList.toggle("dark");
+
+if(document.body.classList.contains("dark")){
+modeBtn.innerHTML="☀ Light Mode";
+}
+else{
+modeBtn.innerHTML="🌙 Dark Mode";
+}
+
+};
+
+// ---------------------
+// CLICK COUNTER
+// ---------------------
+
+let count=0;
+
+let countDisplay=document.getElementById("count");
+
+document.getElementById("clickBtn").onclick=function(){
+
+count++;
+
+countDisplay.innerHTML=count;
+
+};
+
+document.getElementById("resetBtn").onclick=function(){
+
+count=0;
+
+countDisplay.innerHTML=count;
+
+};
+
+// ---------------------
+// FORM VALIDATION
+// ---------------------
+
+document.getElementById("myForm").onsubmit=function(event){
+
+event.preventDefault();
+
+let name=document.getElementById("name").value.trim();
+
+let email=document.getElementById("email").value.trim();
+
+let valid=true;
+
+document.getElementById("nameError").innerHTML="";
+document.getElementById("emailError").innerHTML="";
+document.getElementById("successMsg").innerHTML="";
+
+if(name===""){
+document.getElementById("nameError").innerHTML="Name cannot be empty";
+valid=false;
+}
+
+if(email===""){
+document.getElementById("emailError").innerHTML="Email cannot be empty";
+valid=false;
+}
+else if(!email.includes("@")){
+document.getElementById("emailError").innerHTML="Email must contain @";
+valid=false;
+}
+
+if(valid){
+
+document.getElementById("successMsg").innerHTML="Form Submitted Successfully!";
+
+document.getElementById("myForm").reset();
+
+}
+
+};
+
+</script>
+
+</body>
+</html>
