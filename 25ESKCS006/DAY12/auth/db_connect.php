@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "students_management"; // same database as the rest of the project
+$database = "students_management"; 
 
 $conn = mysqli_connect($host, $user, $password, $database);
 
